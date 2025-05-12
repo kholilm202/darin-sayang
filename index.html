@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Sayangku Darin 🌸</title>
+    <link rel="stylesheet" src="style.css" />
     <style>
       body {
         background-color: #ffe6f0;
@@ -12,61 +13,115 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background-image: url("https://www.transparenttextures.com/patterns/flower.png");
-        transition: background-color 0.5s ease;
+        background-image: linear-gradient(
+          45deg,
+          #ff99cc,
+          #ff66b2,
+          #ff3399,
+          #ff0099
+        );
+        background-size: 400% 400%;
+        animation: gradientAnimation 6s ease infinite;
+        position: relative;
+      }
+
+      @keyframes gradientAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
       }
 
       .login-box {
-        background-color: #fff0f5;
+        background-color: rgba(255, 255, 255, 0.9);
         border: 4px dashed #ff99cc;
-        padding: 30px;
-        border-radius: 20px;
+        padding: 40px;
+        border-radius: 25px;
         text-align: center;
         box-shadow: 0 0 25px rgba(255, 105, 180, 0.3);
         max-width: 350px;
         width: 100%;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .login-box:hover {
+        transform: scale(1.05);
       }
 
       h2 {
         color: #ff69b4;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
+        font-size: 2em;
       }
 
       .emoji {
-        font-size: 40px;
-        margin-bottom: 10px;
+        font-size: 60px;
+        margin-bottom: 15px;
+        animation: bounce 1s infinite alternate;
+      }
+
+      @keyframes bounce {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(-10px);
+        }
       }
 
       input[type="text"],
       input[type="password"] {
         width: 90%;
-        padding: 10px;
+        padding: 12px;
         margin: 10px 0;
         border: 2px solid #ffb6c1;
-        border-radius: 10px;
+        border-radius: 15px;
         background-color: #fff;
-        font-size: 16px;
+        font-size: 18px;
+        transition: transform 0.3s ease;
+      }
+
+      input[type="text"]:focus,
+      input[type="password"]:focus {
+        transform: scale(1.05);
+        border-color: #ff69b4;
       }
 
       input[type="submit"] {
         background-color: #ff69b4;
         color: white;
         border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: 10px;
+        padding: 12px 25px;
+        font-size: 18px;
+        border-radius: 15px;
         cursor: pointer;
-        transition: background-color 0.3s ease;
+        transition: background-color 0.3s ease, transform 0.3s ease;
       }
 
       input[type="submit"]:hover {
         background-color: #ff1493;
+        transform: scale(1.05);
       }
 
       .footer-note {
-        margin-top: 15px;
-        font-size: 12px;
+        margin-top: 20px;
+        font-size: 14px;
         color: #cc6699;
+        animation: fadeIn 2s ease;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
       }
 
       /* Galeri bagian */
@@ -74,13 +129,14 @@
         display: none;
         flex-direction: column;
         align-items: center;
-        background-color: #fff0f5;
+        background-color: rgba(255, 240, 245, 0.9);
         border: 4px dashed #ff99cc;
         padding: 30px;
         border-radius: 20px;
         box-shadow: 0 0 25px rgba(255, 105, 180, 0.3);
         max-width: 600px;
         width: 100%;
+        position: relative;
       }
 
       .image-container {
@@ -92,10 +148,16 @@
       }
 
       .image-container img {
-        max-width: 120px;
-        max-height: 120px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+        max-width: 150px;
+        max-height: 150px;
+        border-radius: 20px;
+        box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+        transition: transform 0.3s ease, opacity 0.5s ease;
+      }
+
+      .image-container img:hover {
+        transform: scale(1.1);
+        opacity: 0.8;
       }
 
       .input-container {
@@ -104,39 +166,101 @@
 
       .input-container textarea {
         width: 90%;
-        padding: 10px;
+        padding: 15px;
         margin: 10px 0;
         border: 2px solid #ffb6c1;
-        border-radius: 10px;
+        border-radius: 15px;
         background-color: #fff;
         font-size: 16px;
         min-height: 150px;
         resize: vertical;
+        transition: transform 0.3s ease;
       }
 
-      .input-container input[type="text"] {
-        width: 90%;
-        padding: 10px;
-        margin: 10px 0;
-        border: 2px solid #ffb6c1;
-        border-radius: 10px;
-        background-color: #fff;
-        font-size: 16px;
+      .input-container textarea:focus {
+        transform: scale(1.05);
+        border-color: #ff69b4;
       }
 
       .submit-button {
         background-color: #ff69b4;
         color: white;
         border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: 10px;
+        padding: 12px 25px;
+        font-size: 18px;
+        border-radius: 15px;
         cursor: pointer;
-        transition: background-color 0.3s ease;
+        transition: background-color 0.3s ease, transform 0.3s ease;
       }
 
       .submit-button:hover {
         background-color: #ff1493;
+        transform: scale(1.05);
+      }
+
+      /* Fun Confetti Animation */
+      .confetti {
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 1000;
+      }
+
+      .confetti div {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #ff69b4;
+        animation: confettiFall 1.5s infinite ease-in-out;
+      }
+
+      @keyframes confettiFall {
+        0% {
+          transform: translateY(0) rotate(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      /* Flower Animation */
+      .flower {
+        position: absolute;
+        z-index: 100;
+        animation: flowerFloat 10s ease-in-out infinite;
+      }
+
+      .flower img {
+        width: 50px;
+        height: 50px;
+        animation: flowerGrow 3s ease-in-out infinite;
+      }
+
+      @keyframes flowerFloat {
+        0% {
+          transform: translateY(-100px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(80vh) rotate(180deg);
+        }
+        100% {
+          transform: translateY(-100px) rotate(360deg);
+        }
+      }
+
+      @keyframes flowerGrow {
+        0% {
+          transform: scale(0.5);
+        }
+        50% {
+          transform: scale(1.5);
+        }
+        100% {
+          transform: scale(0.5);
+        }
       }
     </style>
   </head>
@@ -164,45 +288,35 @@
     </div>
 
     <div class="gallery-box">
+      <div class="confetti" id="confetti"></div>
       <h2>Galeri Sayangku Darin 🌸</h2>
-      // Fungsi untuk memuat 154 gambar
       <div style="margin-top: 30px">
         <img
           src="image1.jpeg"
           alt="Gambar besar untuk Darin"
           style="
             max-width: 100%;
+            width: 600px;
+            height: auto;
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
           "
         />
       </div>
-      ;
-      <!-- Tempat untuk gambar -->
+
       <div class="image-container" id="image-container">
         <!-- Gambar akan dimuat oleh JavaScript -->
       </div>
-      <a
-        >banyak yang kosong kan sengaja hehe, bsk kita isi pake foto box ya,fun
-        fact aja nii jujur pas aku bilang nugas tu aku ngerjain ini .
-      </a>
 
-      <!-- Kolom untuk pesan -->
       <div class="input-container">
         <textarea
           id="birthdayMessage"
           placeholder="Masukkan pesan ulang tahun untuk Darin 💌"
         >
 Happy birthday sayanggkuu semoga dengan bertambahnya usiamu, semakin sempurna juga imanmu, rajin ibadahnya, selalu diberi kesehatan sama yang mahakuasa, panjang umur, selalu bahagia, berbakti terus sama orangtua, serta segala doa dan cita cita yang kamu inginkan bisa terwujud dan dimudahkan dalam segala urusan. Aamiin
-
-yeyeyy sekarang kamuu ulang tahun sayangg, sekarang kamu semakin dewasa yang dimana kamu pasti tau yang terbaik maupun yang gak buat diri kamuu, harus lebih dewasa dari sebelumnya yaaa, jangan pernah cape buat perbaiki diri jadi lebih baik lagi,
-
-semangat terus buat kejar semua keinginan kamu, kamu pasti bisa sayangg, jangan pernah takut gagal yaa, aku selalu dukung kamu dan support kamu sayang, jangan cape yaa sayangg! semangat terus aku selalu ada disamping kamu, selalu rendah hati, jadi anak baik ya sayangg, selalu sayang sama keluarga yaa, jangan lupa untuk selalu bersyukur yaa byy, semoga apapun yang kamu lakukan hari ini dan hari berikutnya selalu diberi kelancaran serta keselamatan, Aamiin.
-
-maaf gabisa selalu ada disamping kamu, walaupun terhalang jarak, aku selalu berdoa agar kamu dalam lindungan Allah, semoga aku bisa nemenin kamu selama mungkin
         </textarea>
 
-        <h1>kamu pikir cuma segini ya engga dong,liat ya besok pas ketemu</h1>
+        <h1>kamu pikir cuma segini ya engga dong, liat ya besok pas ketemu</h1>
       </div>
 
       <button class="submit-button" onclick="displayMessage()">
@@ -212,37 +326,49 @@ maaf gabisa selalu ada disamping kamu, walaupun terhalang jarak, aku selalu berd
       <div class="footer-note">* 🌷🌷🌷🌷🌷🌷</div>
     </div>
 
+    <!-- Flower Animations -->
+    <div class="flower" style="left: 0%">
+      <img src="flower1.png" alt="Flower " />
+    </div>
+    <div class="flower" style="left: 60%">
+      <img src="flower2.png" alt="Flower " />
+    </div>
+    <div class="flower" style="left: 85%">
+      <img src="flower3.png" alt="Flower " />
+    </div>
+    <div class="flower" style="left: %">
+      <img src="flower5.png" alt="Flower " />
+    </div>
+    <div class="flower" style="left: 25%">
+      <img src="flower4.png" alt="Flower " />
+    </div>
+
     <script>
       function loginSweet() {
         const user = document.getElementById("username").value.toLowerCase();
         const pass = document.getElementById("password").value;
 
-        if (user.includes("darin") && pass === "sayang123") {
+        if (user.includes("darin") && pass === "darinsayang") {
           // Menyembunyikan form login dan menampilkan galeri
           document.querySelector(".login-box").style.display = "none";
           document.querySelector(".gallery-box").style.display = "flex";
-
-          // Mengubah latar belakang untuk nuansa baru
           document.body.style.backgroundColor = "#ffffff";
-
-          // Memuat gambar-gambar
           loadImages();
-
+          triggerConfetti(); // Start confetti animation
           alert("Yayyy! Selamat datang cintaku Darin! 💖🌸🥰");
-          return false; // Tidak melanjutkan ke halaman lain
+          return false;
         } else {
           alert("Eh salah sayang 😢 Coba lagi yaa 💔");
           return false;
         }
       }
 
-      // Fungsi untuk memuat 154 gambar
       function loadImages() {
         const imageContainer = document.getElementById("image-container");
         const imgElement = document.createElement("img");
-        imgElement.src = `image1.jpeg`; // Ganti dengan path gambar kamu
+        imgElement.src = `image1.jpeg`;
         imgElement.alt = `Foto Sayangku 💖`;
-        imgElement.style.width = "599px"; // Perbesar ukuran di sini
+        imgElement.style.width = "599px";
         imgElement.style.border = "6px dotted #ff99cc";
         imgElement.style.padding = "10px";
         imgElement.style.backgroundColor = "#fff0f5";
@@ -251,9 +377,19 @@ maaf gabisa selalu ada disamping kamu, walaupun terhalang jarak, aku selalu berd
         imageContainer.appendChild(imgElement);
       }
 
+      function triggerConfetti() {
+        const confettiContainer = document.getElementById("confetti");
+        for (let i = 0; i < 30; i++) {
+          const confettiPiece = document.createElement("div");
+          confettiPiece.style.left = `${Math.random() * 100}vw`;
+          confettiPiece.style.animationDuration = `${Math.random() * 2 + 2}s`;
+          confettiPiece.style.animationDelay = `${Math.random() * 2}s`;
+          confettiContainer.appendChild(confettiPiece);
+        }
+      }
+
       function displayMessage() {
         const userMessage = document.getElementById("birthdayMessage").value;
-
         if (userMessage) {
           alert("Pesan terkirim! 💖 " + userMessage);
         } else {
@@ -261,5 +397,18 @@ maaf gabisa selalu ada disamping kamu, walaupun terhalang jarak, aku selalu berd
         }
       }
     </script>
+    <!-- Background music -->
+    <audio id="romanticMusic" autoplay loop>
+      <source src="lagu_romantis.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- Container untuk bunga jatuh -->
+    <div id="flower-container"></div>
+
+    <!-- Container untuk hati -->
+    <div id="heart-container"></div>
+
+    <!-- Sparkles -->
+    <div id="sparkle-container"></div>
   </body>
 </html>
